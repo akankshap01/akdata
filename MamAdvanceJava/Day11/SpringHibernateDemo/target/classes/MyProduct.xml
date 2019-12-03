@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+	
+	<context:annotation-config></context:annotation-config>
+	<context:component-scan base-package="com.training"></context:component-scan>
+	<context:property-placeholder 
+	        location="classpath:/data.properties" />
+	<!-- <bean id="placeHolder" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	   <property name="location" value="data.properties"></property>
+	</bean> -->
+<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+
+           <property name="driverClassName"  value="${jdbc.driverclass}"></property>  
+           <property name="url" value="${jdbc.url}"></property>  
+           <property name="username" value="${jdbc.username}"></property>  
+           <property name="password" value="${jdbc.password}"></property>  
+        </bean>
+	
+		<bean id="sessionFactory" 
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean"
+		p:packagesToScan="com.training.beans" p:dataSource-ref="dataSource">
+		<property name="hibernateProperties">
+			<value>
+				hibernate.dialect=${jdbc.dialect}
+				hibernate.format_sql=true
+				hibernate.show_sql=true
+				hibernate.hbm2ddl.auto=create
+			</value>
+		</property>
+	</bean>
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate5.HibernateTransactionManager"
+		p:sessionFactory-ref="sessionFactory">
+	</bean>
+	<tx:annotation-driven /> 
+
+</beans>

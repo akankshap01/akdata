@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<bean id="hwbean" class="com.training.beans.HelloWorld" scope="prototype"></bean>
+<bean id="addr" class="com.training.beans.Address">
+    <property name="id" value="1"></property>
+    <property name="city" value="Pune"></property>
+     <property name="street" value="Baner"></property>
+    
+</bean>
+<bean id="p1" class="com.training.beans.Person" scope="prototype" autowire="byName" init-method="myInit" destroy-method="myDestroy">
+  <property name="id" value="10"></property>
+  <property name="name" value="Kishori"></property>
+  <property name="mobile" value="1111"></property>
+  
+</bean>
+
+<bean id="p2" class="com.training.beans.Person" scope="prototype">
+  <property name="id" value="11"></property>
+  <property name="name" value="Rajan"></property>
+  <property name="mobile" value="222"></property>
+  <property name="addr"><ref bean="addr"></ref></property>
+</bean>	
+<bean id="e1" class="com.training.beans.Employee" parent="p1">
+   <property name="dept" value="HR"></property>
+</bean>
+<bean id="p3" class="com.training.beans.Person">
+  <constructor-arg index="0" value="123"></constructor-arg>
+  <constructor-arg index="1" value="xxxx"></constructor-arg>
+  <constructor-arg index="2" value="33333"></constructor-arg>
+  <constructor-arg index="3" ref="addr"></constructor-arg>
+</bean>
+
+
+
+
+</beans>

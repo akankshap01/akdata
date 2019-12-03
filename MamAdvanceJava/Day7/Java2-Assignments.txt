@@ -1,0 +1,49 @@
+Design a form to accept loan amount and number of terms from user
+interest rate is 8.5%
+Write a servlet to calculate EMI and display it.
+
+
+2. Design appliaction for Login and registration of users
+also implement forgot password
+
+3. Design application to login to the system
+and accept category from user
+and display products with check boxes
+and a button Add order and also display a button with payment
+And calculate Bill and display the bill amount
+
+bill should display following information
+
+Name of user
+Todays date
+List of products and total Bill amount
+and also show a button pay Bill
+
+Open a page 
+to accept
+credit card details
+and a button to submit then send a mail to user saying Order successfully placed
+and bill amount is :
+
+
+3.Tax calculation using Servlet and JSP
+
+
+
+
+Hibernate  Assignments
+3. Add book entity and Author entity
+Book - bid,bname,price, noOfPages,Author
+Author- Authid,AuthName,mobile
+
+Use Embadable and OneToOne relation for both Book and Author
+UniDirectional as well as Bidirectional
+
+
+
+
+
+
+
+
+ 
